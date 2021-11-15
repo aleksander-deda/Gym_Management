@@ -116,12 +116,7 @@ def add_member(request):
 
 def search_member(request):
     if request.method == 'POST':
-        # search_form = SearchForm(request.POST)
-        # first_name = request.POST.get('search')
-        # check = Member.objects.filter(first_name__contains=first_name)
-        # check = serializers.serialize('json', check)
-        # context = {}
-        # context['search'] = check
+        
         if 'clear' in request.POST:
             return redirect('view_member')
         search_form = SearchForm(request.POST)
@@ -165,9 +160,10 @@ def update_member(request, id):
                 amount = request.POST.get('amount')
                 day = (parser.parse(request.POST.get('registration_upto')) - delta.relativedelta(months=int(request.POST.get('subscription_period')))).day
                 last_day = parser.parse(str(object.registration_upto)).day
-
                 month = parser.parse(request.POST.get('registration_upto')).month
                 last_month = parser.parse(str(object.registration_upto)).month
+                
+                
                 # if status is stopped then do not update anything
                 if object.stop == 1 and not request.POST.get('stop') == '0' and request.POST.get('gym_membership'):
                     messages.error(request, 'Please start the status of user to update the record')
