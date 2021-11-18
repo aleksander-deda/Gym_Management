@@ -46,7 +46,6 @@
             {% endif %}
         </div>
     </form>
-    <!-- <div id="ajax_result" style="margin-top: 2%;"></div> -->
 </div>
 
 {% if result %}
@@ -57,7 +56,6 @@
             <th scope="col">ID</th>
             <th scope="col">Name</th>
             <th scope="col">DOB</th>
-            <!-- <th scope="col">Photo</th> -->
             <th scope="col">Registration Date</th>
             <th scope="col">Registration Upto</th>
             <th scope="col">Subscription Type</th>
@@ -75,7 +73,8 @@
               <td>{{ member.registration_date }}</td>
               <td>{{ member.registration_upto }}</td>
               <td>{{ member.get_subscription_type_display }}</td>
-              <td>{{ member.subscription_period }} Months</td>
+              <td>{% if member.subscription_period == "1" %} 1 Month 
+                  {% else %} {{member.subscription_period}} Months {% endif %}</td>
               <td>
                   {% if member.fee_status == 'paid' %}
                   <span class="icon-checkmark" style="color: green"></span>
@@ -114,7 +113,6 @@
                 <th scope="col">ID</th>
                 <th scope="col">Name</th>
                 <th scope="col">DOB</th>
-                <!-- <th scope="col">Photo</th> -->
                 <th scope="col">Registration Date</th>
                 <th scope="col">Registration Upto</th>
                 <th scope="col">Subscription Type</th>
@@ -131,7 +129,8 @@
                   <td>{{ member.registration_date }}</td>
                   <td>{{ member.registration_upto }}</td>
                   <td>{{ member.get_subscription_type_display }}</td>
-                  <td>{{ member.subscription_period }} Months</td>
+                  <td>{% if member.subscription_period == "1" %} 1 Month 
+                  {% else %} {{member.subscription_period}} Months {% endif %} </td>
                   <td>
                       {% if member.fee_status == 'paid' %}
                       <span class="icon-checkmark" style="color: green"></span>
@@ -176,7 +175,6 @@
                 <th scope="col">ID</th>
                 <th scope="col">Name</th>
                 <th scope="col">DOB</th>
-                <!-- <th scope="col">Photo</th> -->
                 <th scope="col">Registration Date</th>
                 <th scope="col">Registration Upto</th>
                 <th scope="col">Subscription Type</th>
@@ -193,7 +191,8 @@
                   <td>{{ member.registration_date }}</td>
                   <td>{{ member.registration_upto }}</td>
                   <td>{{ member.get_subscription_type_display }}</td>
-                  <td>{{ member.subscription_period }} Months</td>
+                  <td>{% if member.subscription_period == "1" %} 1 Month 
+                  {% else %} {{member.subscription_period}} Months {% endif %} </td>
                   <td>
                       {% if member.fee_status == 'paid' %}
                       <span class="icon-checkmark" style="color: green"></span>
@@ -215,7 +214,6 @@
                 <th scope="col">ID</th>
                 <th scope="col">Name</th>
                 <th scope="col">DOB</th>
-                <!-- <th scope="col">Photo</th> -->
                 <th scope="col">Registration Date</th>
                 <th scope="col">Registration Upto</th>
                 <th scope="col">Subscription Type</th>
@@ -232,7 +230,8 @@
                   <td>{{ member.registration_date }}</td>
                   <td>{{ member.registration_upto }}</td>
                   <td>{{ member.get_subscription_type_display }}</td>
-                  <td>{{ member.subscription_period }} Months</td>
+                  <td>{% if member.subscription_period == "1" %} 1 Month 
+                  {% else %} {{member.subscription_period}} Months {% endif %}</td>
                   <td>
                       {% if member.fee_status == 'paid' %}
                       <span class="icon-checkmark" style="color: green"></span>
@@ -254,7 +253,6 @@
                 <th scope="col">ID</th>
                 <th scope="col">Name</th>
                 <th scope="col">DOB</th>
-                <!-- <th scope="col">Photo</th> -->
                 <th scope="col">Registration Date</th>
                 <th scope="col">Registration Upto</th>
                 <th scope="col">Subscription Type</th>
@@ -271,7 +269,8 @@
                   <td>{{ member.registration_date }}</td>
                   <td>{{ member.registration_upto }}</td>
                   <td>{{ member.get_subscription_type_display }}</td>
-                  <td>{{ member.subscription_period }} Months</td>
+                  <td>{% if member.subscription_period == "1" %} 1 Month
+                  {% else %} {{member.subscription_period}} Months {% endif %}</td>
                   <td>
                       {% if member.fee_status == 'paid' %}
                       <span class="icon-checkmark" style="color: green"></span>

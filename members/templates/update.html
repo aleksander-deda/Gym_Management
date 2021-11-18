@@ -10,7 +10,7 @@
             <div class="container text-center">
                 <div class="messages">
                     {% for message in messages %}
-                    <div{% if message.tags == 'error' %} class="alert alert-dark" {% else %} class="alert alert-{{ message.tags }} "{% endif %}>
+                    <div {% if message.tags == 'error' %} class="alert alert-dark" {% else %} class="alert alert-{{ message.tags }} "{% endif %}>
                         {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Important: {% endif %}
                         {{ message }}
                     </div>
@@ -109,7 +109,7 @@
                   <input type="submit" class="btn btn-primary" name="gym_membership" value="Update" style="margin-top: 32px; margin-left: 140px;" />
                 </div>
                 <div class="form-group col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                  <button class="btn btn-danger float-right" style="margin-top: 32px; margin-left: 20px" <a href={% url 'delete_member' user.member_id %}>Delete Account</a></button>
+                <a class="btn btn-danger float-right" type="button" style="margin-top: 32px; margin-left: 20px" href={% url 'delete_member' user.member_id %}>Delete Account</a>
                 </div>
               </div>
             </form>
@@ -165,7 +165,8 @@
                 {% for pays in payments %}
                   <tr>
                     <td>{{ pays.payment_date }}</td>
-                    <td>{{ pays.payment_period }} Months</td>
+                    <td>{% if pays.payment_period == 1 %} 1 Month
+                    {% else %} {{ pays.payment_period }} Months {% endif %}</td>
                     <td>{{ pays.payment_amount }}</td>
                   </tr>
                 {% endfor %}

@@ -91,7 +91,6 @@ class AddMemberForm(ModelForm):
 
     class Meta:
         model = Member
-        # fields = ['first_name', 'last_name', 'mobile_number', 'email', 'address', 'subscription_type', 'subscription_period', 'amount']
         fields = '__all__'
         exclude = ['registration_upto']
         widgets = {
