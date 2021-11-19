@@ -48,9 +48,9 @@ class Member(models.Model):
     email = models.EmailField(null=True, blank=True)
     address = models.CharField(max_length=300, blank=True)
     medical_history = models.CharField(('Medical History'), max_length=300, blank=True, default='None')
-    admitted_on = models.DateField(auto_now_add=True)
+    admitted_on = models.DateField(('admitted_on'),auto_now_add=True)
     registration_date = models.DateField(('Registration Date'), default='dd/mm/yyyy')
-    registration_upto = models.DateField()
+    registration_upto = models.DateField(('registration_upto'))
     dob = models.DateField(default='dd/mm/yyyy')
     subscription_type  = models.CharField(
                                 ('Subscription Type'),

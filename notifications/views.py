@@ -49,6 +49,3 @@ def notification_delete(request, id):
     member.save()
     post_save.connect(my_handler, sender=Member)
     return redirect('/notifications/')
-
-# post_save.connect(my_handler, sender=Member)
-# pre_save.connect(run_notifier, sender=Member)

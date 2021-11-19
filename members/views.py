@@ -13,6 +13,8 @@ from notifications.config import get_notification_count
 from django.db.models.signals import post_save
 from notifications.config import my_handler
 from django.contrib import messages
+from django.core.mail import send_mail
+
 
 def model_save(model):
     post_save.disconnect(my_handler, sender=Member)
@@ -77,6 +79,23 @@ def add_member(request):
     if request.method == 'POST':
         form = AddMemberForm(request.POST, request.FILES)
         if form.is_valid():
+            # sending email notification when member registered
+            first_name = request.POST['first_name']
+            email = request.POST['email']
+            last_name = request.POST['last_name']
+            mobile_number = request.POST['mobile_number']
+            address = request.POST['address']
+            registration_date = request.POST['registration_date']
+            subscription_type = request.POST['subscription_type']
+            subscription_period = request.POST['subscription_period']
+            batch = request.POST['batch']
+            amount = request.POST['amount'] 
+            subject = 'Welcome to our Gym!'
+            message = f'Dear {first_name}, \n\n You have been registered to our Gym.\n Your datas: \n First Name: {first_name}\n Last Name: {last_name}\n Address: {address}\n Mobile Number: {mobile_number}\n Subscription Period: {subscription_period}\n Registration Date: {registration_date}\n Batch: {batch}\n Subscription type: {subscription_type}\n Amount: {amount} \n\n We will help you to reach your achievements with us.\n Best regards,'
+            from_email = 'aleksi1.deda@gmail.com'
+            recipient_list = [email]
+            send_mail(subject, message, from_email, recipient_list, fail_silently=False)
+
             temp = form.save(commit=False)
             temp.first_name = request.POST.get('first_name').capitalize()
             temp.last_name = request.POST.get('last_name').capitalize()

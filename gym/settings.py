@@ -130,3 +130,11 @@ WALLPAPER_URL = os.path.normpath(MEDIA_URL+'/wallpaper/')
 
 PHOTOS_FILES = os.path.normpath(MEDIA_ROOT+'/photos')
 PHOTOS_URL = os.path.normpath(MEDIA_URL+'/photos/')
+
+#Email Notification
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'aleksi1.deda@gmail.com'
+EMAIL_HOST_PASSWORD = 'aleksi1999'
+EMAIL_USE_TLS = True
