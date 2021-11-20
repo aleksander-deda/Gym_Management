@@ -187,11 +187,13 @@ def update_member(request, id):
                 if object.stop == 1 and not request.POST.get('stop') == '0' and request.POST.get('gym_membership'):
                     messages.error(request, 'Please start the status of user to update the record')
                     return redirect('update_member', id=object.pk)
+               
                 # to change only the batch
                 elif (object.batch != request.POST.get('batch')):
                     object.batch = request.POST.get('batch')
                     object = check_status(request, object)
                     model_save(object)
+                
                 # check if user has modified only the date
                 elif (datetime.datetime.strptime(str(object.registration_date), "%Y-%m-%d") != datetime.datetime.strptime(request.POST.get('registration_date'), "%Y-%m-%d")):
                         object.registration_date =  parser.parse(request.POST.get('registration_date'))
@@ -199,6 +201,7 @@ def update_member(request, id):
                         object.fee_status = request.POST.get('fee_status')
                         object = check_status(request, object)
                         model_save(object)
+               
                 # if amount and period are changed
                 elif (object.amount != amount) and (object.subscription_period != request.POST.get('subscription_period')):
                     object.subscription_type =  request.POST.get('subscription_type')
@@ -209,11 +212,13 @@ def update_member(request, id):
                     object.amount =  request.POST.get('amount')
                     object = check_status(request, object)
                     model_save(object)
+               
                 # if only subscription_period is Changed
                 elif (object.subscription_period != request.POST.get('subscription_period')):
                     object.subscription_period =  request.POST.get('subscription_period')
                     object = check_status(request, object)
                     model_save(object)
+               
                 # if amount and type are changed
                 elif (object.amount != amount) and (object.subscription_type != request.POST.get('subscription_type')):
                     object.subscription_type =  request.POST.get('subscription_type')
@@ -224,12 +229,14 @@ def update_member(request, id):
                     object.amount =  request.POST.get('amount')
                     object = check_status(request, object)
                     model_save(object)
+                
                 # if amount ad fee status are changed
                 elif (object.amount != amount) and ((request.POST.get('fee_status') == 'paid') or (request.POST.get('fee_status') == 'pending')):
                         object.amount = amount
                         object.fee_status = request.POST.get('fee_status')
                         object = check_status(request, object)
                         model_save(object)
+                
                 # if only amount is channged
                 elif (object.amount != amount):
                     object.registration_date =  parser.parse(request.POST.get('registration_upto'))
@@ -242,6 +249,7 @@ def update_member(request, id):
                         object.notification = 2
                     object = check_status(request, object)
                     model_save(object)
+                
                 # nothing is changed
                 else:
                     if not request.POST.get('stop') == '1':
